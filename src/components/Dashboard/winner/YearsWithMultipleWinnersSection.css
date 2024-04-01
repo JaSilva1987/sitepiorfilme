@@ -1,0 +1,39 @@
+.years-with-multiple-winners-container {
+    margin-top: 20px;
+  }
+  
+  .table-container {
+    width: 100%;
+  }
+  
+  .years-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    background-color: #2f4f4f;
+    color: #ffffff;
+  }
+  
+  .table-content {
+    background-color: #ffffff;
+  }
+  
+  .table-content th,
+  .table-content td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .wins-count-cell {
+    text-align: center !important;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .table-content {
+      overflow-x: auto;
+    }
+  }
+  

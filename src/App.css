@@ -1,62 +1,62 @@
-/* App.css */
+body {
+  font-family: Arial, sans-serif; 
+}
 
-/* Estilos padrão */
 .app-container {
-    display: flex;
-  }
-  
-  .menu {
-    flex: 0 0 200px;
-    background-color: #f0f0f0;
-    height: 100vh; /* Define a altura como 100% da altura da viewport */
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical, se necessário */
-  }
-  
-  .content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .header {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .menu ul li {
-    padding: 10px;
-  }
-  
-  .menu ul li a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .menu ul li a:hover {
-    background-color: #ccc;
-  }
-  
-  /* Media query para telas maiores que 768x1280 */
-  @media screen and (min-width: 768px) and (min-height: 1280px) {
-    .app-container {
+  display: flex;
+}
+
+.menu {
+  flex: 0 0 200px;
+  background-color: #f0f0f0;
+  height: 100vh; /* Define a altura como 100% da altura da viewport */
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu ul li {
+  padding: 10px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu ul li a:hover {
+  background-color: #ccc;
+}
+
+/* Media query para telas maiores que 768x1280 */
+@media screen and (min-width: 768px) and (min-height: 1280px) {
+  .app-container {
       flex-direction: column;
-    }
-  
-    .menu {
+  }
+
+  .menu {
       flex: 0 0 auto;
       width: 100%; /* Define a largura como 100% */
       height: auto; /* Redefine a altura para auto */
-    }
-  
-    .content {
+  }
+
+  .content {
       flex: 1;
       width: 100%; /* Define a largura como 100% */
-    }
   }
-  
+}

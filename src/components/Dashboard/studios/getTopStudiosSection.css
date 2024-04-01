@@ -1,0 +1,35 @@
+.table-container {
+  width: 100%;
+}
+
+.full-width-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background-color: #2f4f4f;
+  color: #ffffff;
+  height: 35px;
+}
+
+.table-content {
+  background-color: #ffffff;
+}
+
+.wins-count-cell {
+  text-align: center !important;
+}
+
+.table-content th,
+.table-content td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+@media screen and (max-width: 768px) {
+  .table-content {
+    overflow-x: auto;
+  }
+}

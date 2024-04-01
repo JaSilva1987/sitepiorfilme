@@ -2,9 +2,21 @@ import axios from "axios";
 
 const API_URL = "https://tools.texoit.com/backend-java/api/movies";
 
-export const getWinnersByYear = async () => {
+export const getWinnersByYear = async (year: string) => {
   try {
-    const response = await axios.get(`${API_URL}/winnersByYear`);
+    const response = await axios.get(`${API_URL}?winner=true&year=${year}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching winners by year:", error);
+    return [];
+  }
+};
+
+export const getYearsWithMultipleWinners = async () => {
+  try {
+    const response = await axios.get(
+      `${API_URL}?projection=years-with-multiple-winners`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching winners by year:", error);

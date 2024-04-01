@@ -1,8 +1,7 @@
-// App.tsx
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import MovieList from "./components/MovieList";
 import "./App.css";
 
