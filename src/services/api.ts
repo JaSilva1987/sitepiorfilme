@@ -51,9 +51,17 @@ export const getProducerIntervals = async () => {
   }
 };
 
-export const getMovies = async () => {
+export const getMovies = async (
+  pageNumber: number,
+  pageSize: number,
+  year?: string
+) => {
   try {
-    const response = await axios.get(`${API_URL}/movies`);
+    let url = `${API_URL}?page=${pageNumber}&size=${pageSize}`;
+    if (year) {
+      url += `&year=${year}`;
+    }
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     console.error("Error fetching movies:", error);

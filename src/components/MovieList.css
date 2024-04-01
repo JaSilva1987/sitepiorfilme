@@ -1,0 +1,62 @@
+/* MovieList.css */
+
+.winning-movies-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .winning-movies-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header th {
+    background-color: #2f4f4f;
+    color: #ffffff;
+    height: 35px;
+  }
+  
+  .table-content {
+    background-color: #ffffff;
+  }
+  
+  .table-content th,
+  .table-content td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    width: 25%;
+    text-align: center;
+  }
+  
+  .wins-count-cell {
+    text-align: center !important;
+  }
+  
+  .search-form {
+    margin-bottom: 20px;
+  }
+  
+  .year-input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .search-button {
+    background-color: #2f4f4f;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #696969;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .table-content {
+      overflow-x: auto;
+    }
+  }
+  

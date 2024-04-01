@@ -1,57 +1,82 @@
-import React, { useState, useEffect } from "react";
-import Pagination from "./Pagination";
-// import { getMovies } from "../services/api";
+import React, { useEffect, useState } from "react";
+import { getMovies } from "../services/api";
+import "./MovieList.css";
 
-const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(10);
+const MoviesList: React.FC = () => {
+  const [movies, setMovies] = useState<any[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const moviesData = await getMovies();
-  //     setMovies(moviesData);
-  //   }
+  useEffect(() => {
+    fetchMovies(page);
+  }, [page]);
 
-  //   fetchData();
-  // }, []);
+  const fetchMovies = async (pageNumber: number) => {
+    try {
+      const response = await getMovies(pageNumber, 15);
+      setMovies(response.content);
+      setTotalPages(response.totalPages - 1);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
 
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const handlePreviousPage = () => {
+    setPage(page - 1);
+  };
+
+  const handleFirstPage = () => {
+    setPage(1);
+  };
+
+  const handleLastPage = () => {
+    setPage(totalPages);
+  };
 
   return (
-    <div>
-      <h1>Movie List</h1>
-      <table>
-        <thead>
+    <div className="winning-movies-container">
+      <h2>Movies List</h2>
+      <table className="winning-movies-table">
+        <thead className="table-header">
           <tr>
-            <th>Title</th>
+            <th>ID</th>
             <th>Year</th>
+            <th>Title</th>
             <th>Winner</th>
           </tr>
         </thead>
-        <tbody>
-          {currentMovies.map(
-            (movie: { title: string; year: string; winner: string }) => (
-              <tr key={movie.title}>
-                <td>{movie.title}</td>
-                <td>{movie.year}</td>
-                <td>{movie.winner}</td>
-              </tr>
-            )
-          )}
+        <tbody className="table-content">
+          {movies.map((movie) => (
+            <tr key={movie.id}>
+              <td>{movie.id}</td>
+              <td>{movie.year}</td>
+              <td>{movie.title}</td>
+              <td>{movie.winner ? "Yes" : "No"}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <Pagination
-        moviesPerPage={moviesPerPage}
-        totalMovies={movies.length}
-        paginate={paginate}
-      />
+      <div className="pagination">
+        <button onClick={handleFirstPage} disabled={page === 1}>
+          Inicio
+        </button>
+        <button onClick={handlePreviousPage} disabled={page === 1}>
+          Anterior
+        </button>
+        <span>{`Page ${page} of ${totalPages}`}</span>
+        <button onClick={handleNextPage} disabled={page === totalPages}>
+          Próximo
+        </button>
+        <button onClick={handleLastPage} disabled={page === totalPages}>
+          Último
+        </button>
+      </div>
     </div>
   );
 };
 
-export default MovieList;
+export default MoviesList;
